@@ -26,17 +26,16 @@ Array.prototype.isSubsetOf = function(array){
   // Your code here
 
   var uniqArr = [];
-  for (var i = 0; i < array.length; i++) {
+  for (var i = 0; i < this.length; i++) {
   	if (uniqArr.indexOf(i) === -1) {
-  		uniqArr.push(array[i]);
+  		uniqArr.push(this[i]);
   	}
   }
-
   // loop through input array
-  for (var i = 0; i < uniqArr.length; i++) {
+  for (var i = 0; i < array.length; i++) {
   	// loop through this
-  	for (var j = 0; j < this.length; j++){
-  		if (uniqArr.indexOf(this[j]) === -1) {
+  	for (var j = 0; j < uniqArr.length; j++){
+  		if (array.indexOf(uniqArr[j]) === -1) {
   			return false;
   		}
   	}
@@ -44,3 +43,5 @@ Array.prototype.isSubsetOf = function(array){
   }
 
 };
+
+
