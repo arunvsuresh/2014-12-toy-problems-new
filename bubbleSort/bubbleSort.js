@@ -37,5 +37,23 @@ var i;
 
 
 var bubbleSort = function(array) {
-  // Your code here.
+	// assumes smallest number is first element in array
+	// set up temp variable
+	var temp;
+	// loop through array
+	for (var i = 0; i < array.length; i++) {
+		for (var j = 0; j < array.length; j++) {
+			if (array[i] < array[j]) {
+				temp = array[j];
+				array[j] = array[i];
+				array[i] = temp;
+			}
+		}
+		
+	}
+
+	return array;
+
 };
+
+debug(bubbleSort([1, 4, 3, 2]));
