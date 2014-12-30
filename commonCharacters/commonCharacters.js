@@ -13,4 +13,32 @@
 
 var commonCharacters = function(string1, string2) {
   // TODO: Your code here!
+
+  var results = '';
+  // split both strings
+  splitStr1 = string1.split('');
+  splitStr2 = string2.split('');
+
+  var storage = {};
+
+  var storage2 = {};
+
+  for (var i = 0; i < splitStr1.length; i++) {
+  	storage[splitStr1[i]] = true;
+  }
+
+  for (var i = 0; i < splitStr2.length; i++) {
+  	storage2[splitStr2[i]] = true;
+  }
+
+  for (var keys in storage) {
+  	if (keys in storage2) {
+  		results += keys;
+  	}
+  }
+
+  return results;
+
 };
+
+debug(commonCharacters('acexivou', 'aegihobu'));
