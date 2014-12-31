@@ -40,5 +40,3 @@ var commonCharacters = function(string1, string2) {
   return results;
 
 };
-
-debug(commonCharacters('acexivou', 'aegihobu'));
