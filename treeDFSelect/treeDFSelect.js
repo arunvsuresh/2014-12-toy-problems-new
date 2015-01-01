@@ -36,8 +36,25 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
-};
 
+  var filteredArray = [];
+  // recurse on an every node in tree
+  var recurse = function(node) {
+    // if node passes filter, add it to array
+    if (filter(node)) {
+      filteredArray.push(node);
+    }
+
+    // recurse on node's children, if exist
+    for (var i = 0; i < node.children.length; i++) {
+      recurse(node.children[i]);
+    }
+
+  }
+
+  recurse(this);
+
+};
 
 
 /**
