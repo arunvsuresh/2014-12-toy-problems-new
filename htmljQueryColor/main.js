@@ -27,10 +27,15 @@ $(function(){
 
 
 	  // have a setTimeout with an anonymous fn, changing colors at 1000
-	  
+	var color = ['red', 'green', 'blue', 'yellow', 'blue', 'orange', 'purple', 'green'];
+	var random = function() {
+		return Math.floor(Math.random() * color.length);
+	}
+
 	setInterval(function(){
-		$('span').css({color: "red"});
-	}, 1000);
-   
+		$('span').each(function(){
+			$(this).css('color', color[random()]);
+		});
+   		}, 1000);
 
 });
