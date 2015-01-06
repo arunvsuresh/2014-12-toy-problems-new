@@ -23,9 +23,13 @@
  *
 */
 
-var bind = function(
-) {
+var bind = function(fn, context) {
   // TODO: Your code here
+  //var fn = this;
+  // bind the function to this
+  return function() {
+  	fn.call(context);
+  }
 };
 
 /*
@@ -53,7 +57,44 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
+Function.prototype.bind = function(context) {
   // TODO: Your code here
+  var fn = this;
+  // this.method.bind(this)
+  return function() {
+  	fn.apply(context, arguments);
+  }
 };
+
+// var alice = {
+// 	name: 'alice',
+// 	shout: function(){
+// 	     debug(this.name);
+// 	}
+// };
+
+// var alice = {
+//     name: 'alice',
+//     shout: function(){
+//       debug(this.name);
+//     }
+// }
+
+
+// var boundShout = bind(alice.shout, alice);
+// boundShout(); // alerts 'alice'
+// boundShout = bind(alice.shout, {name: 'bob'});
+// boundShout(); // alerts 'bob'
+
+// var boundShout = alice.shout.bind(alice);
+// boundShout(); // alerts 'alice'
+// boundShout = alice.shout.bind({name: 'bob'});
+// boundShout(); // alerts 'bob'
+
+
+
+
+
+
+
+
