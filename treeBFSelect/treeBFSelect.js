@@ -36,24 +36,35 @@ var Tree = function(value){
 };
 
 
-
+//
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
   var results = [];
 
   var recurse = function(node, depth) {
-    if (filter(node.value, depth)) {
-      results.push(node.value);
-    }
+    
 
     // don't go down depth until check every node at depth
-    for (var i = 0; i < node.children.length; i++) {
-      recurse(node.children[i], depth + 1);
+    var arr = [];
+    if (node.length > 0) {
+      for (var i = 0; i < node.length; i++) {
+        if (filter(node[i].value, depth)) {
+          results.push(node[i].value);
+        }
+        // iterate through depth
+        arr = arr.concat(node[i].children);
+      }
+      recurse(arr, depth + 1);
+      
+    }
+
+    else {
+      return
     }
 
   };
 
-  recurse(this, 0);
+  recurse([this], 0);
   return results;
 
 
@@ -125,7 +136,11 @@ var solution = root1.BFSelect(function (value, depth) {
  return value % 2;
 });
 
-//debug(solution);
+
+var sol = root1.BFSelect(function (value, depth) {
+       return depth === 1;
+     })
+debug(solution);
 
 
 
