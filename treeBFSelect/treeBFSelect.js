@@ -140,7 +140,6 @@ var solution = root1.BFSelect(function (value, depth) {
 var sol = root1.BFSelect(function (value, depth) {
        return depth === 1;
      })
-debug(solution);
 
 
 
