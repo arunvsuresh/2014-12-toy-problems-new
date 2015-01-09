@@ -34,7 +34,49 @@
 'use strict';
 
 var compose = function(){
+	// takes two functions and combines 
+	var functions = arguments;
+	var result;
+
+	return function(result) {
+
+		// call each function with result of next function
+		for (var i = functions.length - 1; i >= 0; i--) {
+			result = functions[i].call(this, result);
+		}
+		return result;
+	}
+
+	
+
 };
 
 var pipe = function(){
+
+	var functions = arguments;
+	var result;
+
+	return function(result) {
+
+		// call each function with result of previous function
+		for (var i = 0; i < functions.length; i++) {
+			result = functions[i].call(this, result);
+		}
+		return result;
+	}
+
+	
 };
+
+
+var greet = function(name){ return 'hi: ' + name;}
+var exclaim = function(statement) { return statement.toUpperCase() + '!';}
+var welcome = compose(greet, exclaim);
+welcome('phillip'); // 'hi: PHILLIP!'
+
+
+var add2 = function(number){ return number + 2; }
+var multiplyBy3 = function(number){ return number * 3; }
+pipe(add2, multiplyBy3)(5) // 21
+pipe(add2, multiplyBy3, multiplyBy3)(5); // 63
+
