@@ -13,5 +13,38 @@ exhibits the desired characteristics.
 **/
 
 var binarySearch = function(array, element) {
-  // your code here
-};
+
+  var minIndex = 0;
+  var maxIndex = array.length - 1;
+  var currentIndex;
+  var currentElement;
+
+  while (minIndex <= maxIndex) {
+
+  	// currentIndex
+  	currentIndex = Math.round((minIndex + maxIndex) / 2);
+
+  	// currentElement
+  	currentElement = array[currentIndex];
+
+  	if (currentElement < element) {
+  		minIndex = currentIndex + 1;
+  	}
+
+  	else if (currentElement > element) {
+  		maxIndex = currentIndex - 1;
+  	}
+
+  	else {
+  		return currentIndex;
+  	}
+
+  }
+
+  return -1;
+
+}
+
+
+debug(binarySearch([1, 2, 3, 4, 5], 1));
+
