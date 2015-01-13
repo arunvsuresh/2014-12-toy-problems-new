@@ -36,18 +36,56 @@
 
 var Range = function(start, end, step) {
   // TODO: Your code here
+
+  var result = [];
+
+  if (start === undefined) {
+    throw "Range needs a start value!";
+  }
+
+  if (end === undefined) {
+    return start;
+  }
+
+  for (var i = start; i <= end; i += step) {
+    // push element into results array
+    result.push(i);
+  }
+
+  if (step === undefined) {
+    if (start > end) {
+      // count backwards
+      for (var i = start; i >= end; i--) {
+        result.push(i);
+      }
+    } else {
+      for (var i = start; i < end; i++) {
+        result.push(i);
+      } 
+    }
+  }
+
   
+
   
   this.size = function(){
     // TODO: Your code here
+    return result.length;
   }
   
   this.each = function(callback){
     // TODO: Your code here
+    var arr = [];
+    for (var i = start; i <= end; i + step) {
+      arr.push(callback(result[i]));
+    }
+    return arr;
   }
   
   this.includes = function(val){
     // TODO: Your code here
+    return result.indexOf(val) > -1;
   }
   
 };
+
