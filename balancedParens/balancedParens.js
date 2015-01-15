@@ -129,7 +129,6 @@ var balancedParens = function(input) {
 
 }
 
-debug(balancedParens('('));
 
 
 
