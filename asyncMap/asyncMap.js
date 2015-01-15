@@ -36,7 +36,41 @@
  *
  */
 
-
 var asyncMap = function(tasks, callback){
   /* YOUR CODE HERE */
+  //var funcArgs = Array.prototype.slice.call(arguments[0]);
+
+  var results = [];
+  for (var i = 0; i < tasks.length; i++) {
+  	results.push(tasks[i]());
+  }
+
+  return callback(results);
+
 };
+
+
+// asyncMap([
+// 	function(){
+// 	setTimeout(function(){
+// 		debug('one');
+// 	}, 200)
+// },
+
+// function(){
+// 	setTimeout(function(){
+// 		debug('one');
+// 	}, 200)
+// }
+// ],
+
+// function(results) {
+// 	debug(results);
+// }
+// );
+
+
+
+
+
+
