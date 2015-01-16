@@ -120,23 +120,23 @@ var asyncMap = function(tasks, callback){
 
 // };
 
-// debug(asyncMap([
-// 	function(cb){
-// 	setTimeout(function(){
-// 		cb('one');
-// 	}, 200)
-// },
+debug(asyncMap([
+	function(cb){
+	setTimeout(function(){
+		cb('one');
+	}, 200)
+},
 
-// function(cb){
-// 	setTimeout(function(){
-// 		cb('two');
-// 	}, 100)
-// }
-// ],
+function(cb){
+	setTimeout(function(){
+		cb('two');
+	}, 100)
+}
+],
 
-// function(results) {
-// 	debug(results);
-// }
-// ));
+function(results) {
+	debug(results);
+}
+));
 
 
