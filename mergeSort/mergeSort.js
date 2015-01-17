@@ -95,8 +95,64 @@
  *
  */
 
-
-
 var mergeSort = function(array) {
-  // Your code here.
+
+	if (array.length <= 1) {
+		return array;
+	}
+
+	var left = [];
+	var right = [];
+
+
+	// divide list into two sublists
+	var mid = Math.floor(array.length / 2);
+
+	for (var i = 0; i < array[mid]; i++) {
+		left.push(i);
+	}
+
+	for (var j = array[mid]; j <= array[array.length - 1]; j++) {
+		right.push(j);
+	}
+
+	left = mergeSort(left);
+	right = mergeSort(right);
+
+	var merge = function(left, right) {
+		var result = [];
+		
+		for (var i = 0; i < left.length; i++) {
+			if (left.length != 0 && right.length != 0) {
+				if (left[i] <= right[i]) {
+					result.append(left[i]);
+					left = left.slice(i + 1, left.length);
+				} else {
+					result.append(right[i]);
+					right = right.slice(i + 1, right.length);
+				}
+			}
+			if (left.length != 0) {
+				result.append(left[i]);
+			}
+
+			if (right.length != 0) {
+				result.append(right[i]);
+			}
+		}
+
+		return result;
+		
+	}
+
+	return merge(left, right);
+
 };
+
+
+debug(mergeSort([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+
+
+
+
+
