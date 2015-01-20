@@ -14,4 +14,32 @@
 
 var toFraction = function(number) {
   // Your code here
+
+  var result = '';
+  var remainder = 0;
+
+  // divide the num after decimal by 10
+
+  if (number % 1 === 0) {
+  	result += number + '/1';
+  }
+
+  //2.3 = 23/10
+
+  else {
+  	remainder = number % 10;
+  }
+
+
+
+  return result;
+
+
+
 };
+
+debug(toFraction(3.0));
+//debug(3.0 % 1)
+//debug(2.5/0.5);
+
+
