@@ -43,7 +43,33 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
+var rotateMatrix = function(matrix) {
   // Your code here.
+
+  var height = matrix.length - 1;
+
+  var length = matrix[0].length;
+  // go backwards in each column 
+  	// push each element into an array
+  
+  var result = [];
+  for (var i = 0; i <= height; i++) {
+  	var temp = [];
+  	for (var j = height; j >= 0; j--) {
+  		temp.push(matrix[j][i]);
+  		//debug(result);
+  	}
+  	result.push(temp);
+  }
+
+  return result;
+
 };
+
+var matrix = [
+   [1,2,3,4],
+   [5,6,7,8],
+   [9,'A','B','C'],
+   ['D','E','F','G']
+  ];
+
