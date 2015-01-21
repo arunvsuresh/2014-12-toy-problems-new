@@ -46,6 +46,9 @@
 var rotateMatrix = function(matrix) {
   // Your code here.
 
+  if (matrix.length === 0) {
+    return matrix;
+  }
   var height = matrix.length - 1;
 
   var length = matrix[0].length;
