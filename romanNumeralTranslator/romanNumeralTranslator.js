@@ -29,4 +29,46 @@ var DIGIT_VALUES = {
 var translateRomanNumeral = function(romanNumeral){
 
   // TODO: Implement me!
+
+  var result = 0;
+  // split input to get all digits
+  var romanDigits = romanNumeral.split('');
+
+  // if (typeof romanNumeral === number || typeof romanNumeral === boolean || typeof romanNumeral === function) {
+  // 	return null;
+  // }
+
+  // go through digit_values
+  //for (var key in DIGIT_VALUES) {
+  	// if value of first key is less than value of second key
+  	if (romanDigits.length === 1) {
+  		return DIGIT_VALUES[romanDigits[0]];
+  	}
+  	//var inputDigits = {};
+  	//debug(romanDigits);
+  	for (var i = 1; i <= romanDigits.length; i++) {
+
+  		//inputDigits[romanDigits[i]] = true;
+	  	//subtract first from second
+	  	//debug(romanDigits[i], romanDigits[i + 1]);
+	  	if (DIGIT_VALUES[romanDigits[i - 1]] < DIGIT_VALUES[romanDigits[i]]) {
+	  		result = DIGIT_VALUES[romanDigits[i]] - DIGIT_VALUES[romanDigits[i - 1]];
+	  		//debug(result);
+	  	} 
+
+	  	if (DIGIT_VALUES[romanDigits[i]] <= DIGIT_VALUES[romanDigits[i - 1]]) {
+	  		result = DIGIT_VALUES[romanDigits[i]] + DIGIT_VALUES[romanDigits[i - 1]];
+	  		//debug(result);
+	  	}
+  		
+  	}
+
+  	return result;
+  	
+  //}
+
+
 };
+
+//debug(translateRomanNumeral("IVX")) // 60
+
