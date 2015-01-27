@@ -23,115 +23,34 @@
 //  *
 //  *
  
-// var balancedParens = function(input){
-
-// 	var arr = [];
-
-// 	var parens = '(){}[]';
-// 	var parensPos;
-
-// 	var leftParens = '(';
-// 	var rightParens = ')';
-// 	var parenCount = 0;
-
-// 	var leftBraces = '{';
-// 	var rightBraces = '}';
-// 	var braceCount = 0;
-
-// 	var leftBrackets = '[';
-// 	var rightBrackets = ']';
-// 	var bracketCount = 0;
-
-
-// 	function matching(char1, char2) {
-// 		if ()
-// 	}
-// 	for (var i = 0; i < input.length; i++) {
-// 		if (input[i] === leftParens || input[i] === rightParens) {
-// 			parenCount++;
-// 		}
-
-// 		if (input[i] === leftBraces || input[i] === rightBraces) {
-// 			braceCount++;
-// 		}
-
-// 		if (input[i] === leftBrackets || input[i] === rightBrackets) {
-// 			bracketCount++;
-// 		}
-// 	}
-
-// 	if ()
-
-// 	for (var i = 0; i < input.length; i++) {
-// 		if (input[i] === leftParens || input[i] === leftBraces || input[i] === leftBrackets) {
-// 			arr.push(input[i]);
-// 		}
-
-// 		else if (input[i] === rightParens || input[i] === rightBraces || input[i] === rightBrackets) {
-// 			if (arr.length === 0) {
-// 				return false;
-// 			}
-// 			else {
-// 				arr.pop(input[i]);
-// 			}
-// 		}
-// 	// check to see if char is a parens
-// 		// check to see if parens match at the end - keep track of index of first encounter of parens
-// 			// if parens are same, if parens go right first then left
-
-
-
-
-// };
-
-
-
-var balancedParens = function(input) {
+var balancedParens = function(string) {
 
 	var matches = {
 		'(': ')',
 		'{': '}',
-		'[': ']',
+		'[': ']'
 	};
 
-	var arr = [];
+	var stack = [];
 
-	for (var i = 0; i < input.length; i++) {
-		if (input[i] === '(' || input[i] === '{' || input[i] === '[') {
-			arr.push(input[i]);
-		}
-
-		else if (input[i] === ')' || input[i] === '}' || input[i] === ']') {
-			if (!hasMatching(arr[arr.length - 1, input[i]])) {
-				return false;
+	for (var i = 0; i < string.length; i++) {
+		for (var key in matches) {
+			if (string[i] === key) {
+				stack.push(string[i]);
+			}
+			if (string[i] === matches[key]) {
+				stack.shift(string[i]);
 			}
 		}
 	}
 
-	function hasMatching(paren1, paren2) {
-		// if paren1 has a closing paren2
-		if (paren1 === '(' && paren2 === ')') {
-			return true;
-		}
-
-		if (paren1 === '{' && paren2 === '}') {
-			return true;
-		}
-
-		if (paren1 === '[' && paren2 === ']') {
-			return true;
-		}
-
-		else {
-			return false;
-		}
+	if (stack.length === 0) {
+		return true
+	} else {
+		return false;
 	}
 
-}
-
-
-
-
+};
 
 
 
