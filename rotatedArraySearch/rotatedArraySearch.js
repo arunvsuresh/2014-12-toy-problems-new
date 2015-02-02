@@ -17,5 +17,17 @@
 
 var rotatedArraySearch = function (rotated, target) {
   // Your code here:
+  for (var i = 0; i < rotated.length; i++) {
+  	if (rotated.indexOf(target) < 0) {
+  		return null;
+  	}
+  	else {
+  		if (rotated.indexOf(target) > -1) {
+  			return rotated.indexOf(target);
+  		}
+  	}
+  }
 };
+
+
 
