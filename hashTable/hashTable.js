@@ -7,35 +7,53 @@ var makeHashTable = function(){
   var result = {};
   var storage = [];
   var storageLimit = 1000;
+  for (var i = 0; i < storageLimit; i++) {
+    storage.push([]);
+  }
 
   result.insert = function(k, v){
     // TODO: implement `insert()`
-    this.result.storage.push(k, v);
+
+    // index
+    var index = getIndexBelowMaxForKey(k, storageLimit);
+
+    var bucket = storage[index];
+
+    bucket.push([k, v]);
+
+    // deal with collisions
 
   };
 
-  result.retrieve = function(k, v){
+  result.retrieve = function(k){
     // TODO: implement `retrieve()`
-    var bucket = [k, v];
 
-    for (var i = 0; i < this.storage.length; i++) {
-      if (bucket[1] === v) {
+    var index = getIndexBelowMaxForKey(k, storageLimit);
+
+    var bucket = storage[index];
+
+    for (var i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === k) {
         return v;
       }
     }
 
   };
 
-  result.remove = function(k, v){
+  result.remove = function(k){
     // TODO: implement `remove()`
-    var bucket = [k, v];
 
-    for (var i = 0; i < this.storage; i++) {
-      if (bucket[0] === k) {
-        this.storage.splice(i);
+    var index = getIndexBelowMaxForKey(k, storageLimit);
+
+    var bucket = storage[index];
+
+    var result = null;
+    for (var i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === k) {
+        result = storage.splice(i, 1);
       }
     }
-
+    return result;
   };
 
   return result;
@@ -53,6 +71,7 @@ var getIndexBelowMaxForKey = function(str, max){
   }
   return hash % max;
 };
+
 
 
 
