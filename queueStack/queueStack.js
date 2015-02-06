@@ -31,6 +31,13 @@ Stack.prototype.size = function(){
   return this.counter;
 };
 
+// var inbox = new Stack();
+
+// inbox.push(4);
+// inbox.push(4);
+// inbox.push(4);
+
+// debug(inbox);
 
 /**
   * Queue Class
@@ -50,7 +57,7 @@ var Queue = function() {
   this.dequeue = function(){
     // TODO: implement `dequeue`
     if (inbox.size() > 0) {
-      inbox.splice(0, 1);
+      inbox.storage.splice(0, 1);
     }
   };
 
@@ -60,3 +67,7 @@ var Queue = function() {
     return inbox.size();
   };
 };
+
+
+
+
