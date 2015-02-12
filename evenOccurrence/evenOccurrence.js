@@ -18,21 +18,30 @@ var evenOccurrence = function(arr) {
 
   };
 
-  var count;
+  var obj = {
 
-  var array = [];
+  };
+  
   for (var i = 0; i < arr.length; i++) {
   	items[arr[i]] = items[arr[i]] + 1 || 1;
 
   	if (items[arr[i]] % 2 === 0) {
-  		return arr[i];
+  		obj[arr[i]] = true;
+  	} else {
+  		obj[arr[i]] = false;
   	}
 
   }
 
-  return null
+  for (var key in obj) {
+      for (var i = 0; i < arr.length; i++) {
+          if (obj[arr[i]] === true) {
+              return arr[i];
+          }
+      }
+  }
+   
 
 };
-
 
 
