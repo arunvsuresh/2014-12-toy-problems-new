@@ -12,4 +12,27 @@
 
 var evenOccurrence = function(arr) {
   // Your code here.
+
+  var items = {
+
+
+  };
+
+  var count;
+
+  var array = [];
+  for (var i = 0; i < arr.length; i++) {
+  	items[arr[i]] = items[arr[i]] + 1 || 1;
+
+  	if (items[arr[i]] % 2 === 0) {
+  		return arr[i];
+  	}
+
+  }
+
+  return null
+
 };
+
+
+
