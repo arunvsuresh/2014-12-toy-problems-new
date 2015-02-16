@@ -25,6 +25,6 @@ var primeTester = function(n) {
  * saucy, check out the Sieve of Atkin.)
  */
 
-var primeSieve = function (start, end) {
+// var primeSieve = function (start, end) {
 	
-};
+// };
