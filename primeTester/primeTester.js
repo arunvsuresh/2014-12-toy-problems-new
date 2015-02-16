@@ -10,6 +10,13 @@ var primeTester = function(n) {
     return false;
   }
   // TODO: return true if n is prime, false otherwise
+  var m = n / 2;
+  for (var i = 0; i < m; i++) {
+  	if (m % i === 0) {
+  		return false;
+  	}
+  }
+  return true;
 };
 
 /* Extra credit: Write a function that generates a list of all prime numbers
@@ -19,6 +26,7 @@ var primeTester = function(n) {
  */
 
 var primeSieve = function (start, end) {
+	
 };
 
-
+debug(primeTester(17));
