@@ -28,5 +28,3 @@ var primeTester = function(n) {
 var primeSieve = function (start, end) {
 	
 };
-
-debug(primeTester(17));
