@@ -13,31 +13,56 @@ var makeHashTable = function(){
 
   result.insert = function(k, v){
     // TODO: implement `insert()`
-
-    // index
+    
+    // use hash function to assign index for bucket
     var index = getIndexBelowMaxForKey(k, storageLimit);
 
     var bucket = storage[index];
 
-    bucket.push([k, v]);
+    var tuple;
 
-    // deal with collisions
+    var replaced = false;
+
+    for (var i = 0; i < bucket.length; i++) {
+      tuple = bucket[i];
+      if (tuple[0] === k) {
+        tuple[1] = v;
+        replaced = true;
+        //return;
+      }
+    }
+
+    if (!replaced) {
+      bucket.push([k, v]);
+    }
+
+
+
 
   };
 
   result.retrieve = function(k){
     // TODO: implement `retrieve()`
 
+    // create an index for the bucket
     var index = getIndexBelowMaxForKey(k, storageLimit);
 
+    // create a bucket
     var bucket = storage[index];
 
+    var tuple;
+
+    // iterate through bucket
     for (var i = 0; i < bucket.length; i++) {
-      if (bucket[i][0] === k) {
-        return v;
+      var tuple;
+      // if tuple has key,
+      if (tuple[0] === k) {
+        // return value
+        return tuple[1];
       }
     }
 
+  
   };
 
   result.remove = function(k){
@@ -47,13 +72,19 @@ var makeHashTable = function(){
 
     var bucket = storage[index];
 
-    var result = null;
+    var tuple;
+
     for (var i = 0; i < bucket.length; i++) {
-      if (bucket[i][0] === k) {
-        result = storage.splice(i, 1);
+      tuple = bucket[i];
+
+      if (tuple[0] === k) {
+        delete bucket[i];
       }
+
     }
-    return result;
+
+
+    
   };
 
   return result;
