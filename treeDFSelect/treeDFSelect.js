@@ -31,28 +31,32 @@
  */
 
 var Tree = function(value){
+
   this.value = value;
   this.children = [];
+
 };
 
-Tree.prototype.DFSelect = function(filter) {
+Tree.prototype.DFSelect = function(filter){
 
-  var filteredArray = [];
-  // recurse on an every node in tree
-  var recurse = function(node) {
-    // if node passes filter, add it to array
-    if (filter(node)) {
-      filteredArray.push(node);
+  var results = [];
+  var subroutine = function(node, depth) {
+    // if node passes filter
+    if (filter(node.value, depth)) {
+      results.push(node.value);
     }
-
-    // recurse on node's children, if exist
+    // iterate through all of tree's nodes
     for (var i = 0; i < node.children.length; i++) {
-      recurse(node.children[i]);
+        // push node to results array if passes filter, increase depth by 1
+        subroutine(node.children[i], depth + 1);
     }
-
   }
 
-  recurse(this);
+
+  subroutine(this, 0);
+
+  // return results array
+  return results;
 
 };
 
@@ -110,3 +114,20 @@ Tree.prototype.removeChild = function(child){
     throw new Error("That node is not an immediate child of this tree");
   }
 };
+
+
+var root1 = new Tree(1);
+var branch2 = root1.addChild(2);
+var branch3 = root1.addChild(3);
+var leaf4 = branch2.addChild(4);
+var leaf5 = branch2.addChild(5);
+var leaf6 = branch3.addChild(6);
+var leaf7 = branch3.addChild(7);
+// debug(root1.DFSelect(function (value, depth) {
+//     return value % 2;
+// }));
+
+debug(root1.DFSelect(function (value, depth) {
+       return depth === 1;
+     }));
+     // [2, 3]
